@@ -1,0 +1,213 @@
+
+<mat-horizontal-stepper linear #stepper>
+ 
+    <!------------------------------------- Start Wizard ------------------------------------------->
+       <mat-step [editable]= "false" >
+       <ng-template matStepLabel>Start</ng-template>
+       <div>
+           <button mat-button matStepperNext>Next</button>
+       </div>
+     </mat-step>
+   
+   
+   
+     <!------------------------------- Basic Step----------------------------------------- -->
+   
+   
+     
+     <!-- <mat-step [stepControl]="basicStepsForm" [editable]="true">
+       <form [formGroup]="basicStepsForm">
+         <ng-template matStepLabel>Basic Step</ng-template>
+         <div class="jumbotron vertical-center">
+              <mat-grid-list cols="2" rowHeight="6:1">
+              <mat-grid-tile>
+                  <mat-form-field>
+                      <input matInput placeholder="Customer Name" formControlName="customerName" >
+                    </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field>
+                      <input matInput placeholder="Key" formControlName="sitekey" >
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field>
+                  <input matInput placeholder="Description" formControlName="description" >
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field>
+                      <input matInput placeholder="Theme" formControlName="theme" >
+                    </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field>
+                      <input matInput placeholder="Time Zone" formControlName="timeZone" >
+                    </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field>
+                      <input matInput placeholder="Administrator Name" formControlName="adminName" >
+                    </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+         <div [ngStyle]="{'position': 'absolute', right: '0'}" >
+            <button mat-button (click)="goForward(stepper)">Next</button>
+         </div>
+       </form>
+     </mat-step>
+    -->
+   
+   
+     <!-----------------------------------------Cofigure Step ------------------------------------>
+   
+     <mat-step [stepControl]="configureStepsForm" [editable]="true">
+       <form [formGroup]="configureStepsForm">
+         <ng-template matStepLabel>Configuration</ng-template>
+         <div class="wrapper">
+         <div class="jumbotron vertical-center">
+          <div class="container text-center">
+           
+              <div class="row">
+                <mat-checkbox formControlName="instrumentSchedule">Schedule Instrument</mat-checkbox>
+              </div>
+              <div class="row">
+                <mat-checkbox formControlName="sampleSubmission">Sample Submission</mat-checkbox>
+              </div>
+              <div class="row">
+                <mat-checkbox formControlName="suppliesSubmission">Supplies Submission</mat-checkbox>
+              </div>
+              <div class="row">
+                <mat-checkbox formControlName="barcode"> Enable Barcode </mat-checkbox>
+              </div>
+              <div class="row">
+                <mat-checkbox formControlName="userRegistration"> Enable User Registrartion</mat-checkbox>
+              </div>
+              <div class="row">
+                <mat-checkbox formControlName="animalFacilty"> Enable Animal Facility</mat-checkbox>
+              </div>
+            </div>
+         </div>
+         </div>
+       <div>
+           <button mat-button matStepperPrevious>Back</button>
+           <button mat-button  [ngStyle]="{'position': 'absolute', right: '0'}" (click)="goForward(stepper)">Next</button>
+       </div>
+       </form>
+     </mat-step>
+   
+   
+    <!-----------------------------------------Social Config Step ------------------------------------>
+   
+   
+   
+   
+   <mat-step [stepControl]="socialConfigForm" [editable]="true">
+       <form [formGroup]="socialConfigForm">
+         <ng-template matStepLabel>Social Configuration</ng-template>
+         <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Facebook Application ID" formControlName="fbAppID" >
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Google Application ID" formControlName="googleAppID" >
+            </mat-form-field>
+          </mat-grid-tile>
+        
+         
+        </mat-grid-list>
+         <div>
+           <button mat-button matStepperPrevious>Back</button>
+           <button mat-button  [ngStyle]="{'position': 'absolute', right: '0'}" (click)="goForward(stepper)">Submit</button>
+         </div>
+       </form>
+     </mat-step>
+   
+   
+     <!-----------------------------------------Preview  ------------------------------------>
+    
+    
+     <mat-step>
+       <ng-template matStepLabel>Preview</ng-template>
+       <div class="row">
+         <div class="col">
+          <mat-label>Customer Name:-</mat-label>{{basicStepsForm.value["customerName"]}}
+         </div>
+         <div class="col">
+          <mat-label>Key:-</mat-label>{{basicStepsForm.value["sitekey"]}}
+         </div>
+       </div>
+       <div class="row">
+        <div class="col">
+          <mat-label>Description:-</mat-label>{{basicStepsForm.value["description"]}}
+        </div>
+        <div class="col">
+          <mat-label>Theme:-</mat-label>{{basicStepsForm.value["theme"]}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-label>Time Zone:-</mat-label>{{basicStepsForm.value["timeZone"]}}
+        </div>
+        <div class="col">
+          <mat-label>Administrator Name :-</mat-label>{{basicStepsForm.value["adminName"]}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-label>Schedule Instrument:-</mat-label>{{configureStepsForm.value["instrumentSchedule"]}}
+        </div>
+        <div class="col">
+          <mat-label>Sample Submission:-</mat-label>{{configureStepsForm.value["sampleSubmission"]}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-label>Supplies Submission:-</mat-label>{{configureStepsForm.value["suppliesSubmission"]}}
+        </div>
+        <div class="col">
+          <mat-label>Enable Barcode:-</mat-label>{{configureStepsForm.value["barcode"]}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-label>Enable User Registrartion:-</mat-label>{{configureStepsForm.value["userRegistration"]}}
+        </div>
+        <div class="col">
+          <mat-label>Enable Animal Facility:-</mat-label>{{configureStepsForm.value["animalFacilty"]}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-label>Facebook Application ID:-</mat-label>{{socialConfigForm.value["fbAppID"]}}
+        </div>
+        <div class="col">
+          <mat-label>Google Application ID:-</mat-label>{{socialConfigForm.value["googleAppID"]}}
+        </div>
+      </div>
+      
+      
+       
+       
+       
+       
+       
+   
+       
+       
+       
+       <!-- {{configureStepsForm.value["instrumentSchedule"]}} -->
+   
+       <div>
+         <button mat-button matStepperPrevious>Back</button>
+         <button mat-button (click)="stepper.reset()">Reset</button>
+       </div>
+     </mat-step>
+   </mat-horizontal-stepper>
+   
+   
+   
