@@ -6,7 +6,7 @@
      <ng-template matStepLabel>Start</ng-template>
      <div class="image">
 
-      <img src="http://dev.ideaelan.com/Dev1/Images/WelcomeScreen.png?V1" alt="" />
+      <img style= "width: 100%;" src="http://dev.ideaelan.com/Dev1/Images/WelcomeScreen.png?V1" alt="" />
 
       <h4>Add New Customer</h4>
       
@@ -37,7 +37,7 @@
      <form [formGroup]="basicStepsForm">
       
        <ng-template matStepLabel>Basic Step</ng-template>
-          <div class="jumbotron vertical-center ">
+          <div class="jumbotron vertical-center " style="border:5px solid black">
             <mat-grid-list cols="2" rowHeight="6:1">
               <mat-grid-tile>
                   <mat-form-field>
@@ -103,7 +103,7 @@
        <ng-template matStepLabel>Configuration</ng-template>
        
     
-       <div style="height: 80%;">
+       <div style="height: 80%;" style="border:5px solid black">
         <ul class="list-group" >
           <li class="list-group-item">
             <mat-checkbox formControlName="instrumentSchedule">Schedule Instrument</mat-checkbox>
@@ -144,7 +144,7 @@
  <mat-step [stepControl]="socialConfigForm" [editable]="true">
      <form [formGroup]="socialConfigForm">
        <ng-template matStepLabel>Social Configuration</ng-template>
-       <div class="jumbotron vertical-center ">
+       <div class="jumbotron vertical-center "  style="border:5px solid black">
        <mat-grid-list cols="2" rowHeight="4:1">
         <mat-grid-tile>
           <mat-form-field>
@@ -189,7 +189,7 @@
   
    <mat-step>
      <ng-template matStepLabel>Preview</ng-template>
-     <div class="jumbotron vertical-center ">
+     <div class="jumbotron vertical-center " style="border:5px solid black">
      <hr>
      <div class="row">
        <div class="col">

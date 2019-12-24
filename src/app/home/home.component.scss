@@ -38,21 +38,23 @@
   left: 16px;
 }
 .image { 
-  position: absolute; 
-  width: 80%; /* for IE 6 */
+  position: relative; 
+  width: 100%; /* for IE 6 */
+  border:5px solid black;
+  margin-left: 10px;
+  
 }
 
 h4 { 
   position: absolute; 
   top: 80px; 
   left: 550px; 
-  width: 100%; 
+ // width: 100%; 
 }
 h6 { 
   position: absolute; 
   top: 110px; 
   left: 550px; 
-   
 }
 .bnn{
   position: absolute; 
