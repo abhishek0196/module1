@@ -1,6 +1,111 @@
 
 <mat-horizontal-stepper linear #stepper>
+  
+  
+ <mat-step>
+  <ng-template matStepLabel>Preview</ng-template>
+  <div class="jumbotron vertical-center " style="border:1.5px solid black">
+  <hr>
+  <div class="row">
+   <div class="col"  style="text-align:center;color: blue;">
+    Basic Details
+   </div>
+    
+  </div>
+  <hr>
+  <div class="row">
+   
+    <div class="col">
+     <mat-label><b>Customer Name:-</b></mat-label>{{basicStepsForm.value["customerName"]}}
+    </div>
+    <div class="col">
+     <mat-label><b>Key:-</b></mat-label>{{basicStepsForm.value["sitekey"]}}
+   </div>
+  </div>
+  <hr>
+  <div class="row">
+   <div class="col">
+     <mat-label><b>Description:-</b></mat-label>{{basicStepsForm.value["description"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Theme:-</b></mat-label>{{basicStepsForm.value["theme"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Time Zone:-</b></mat-label>{{basicStepsForm.value["timeZone"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Administrator Name :-</b></mat-label>{{basicStepsForm.value["adminName"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+  <div class="col"  style="text-align:center;color: blue;">
+   Configuration Details
+  </div>
+   
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Schedule Instrument:-</b></mat-label>{{configureStepsForm.value["instrumentSchedule"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Sample Submission:-</b></mat-label>{{configureStepsForm.value["sampleSubmission"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Supplies Submission:-</b></mat-label>{{configureStepsForm.value["suppliesSubmission"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Enable Barcode:-</b></mat-label>{{configureStepsForm.value["barcode"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Enable User Registrartion:-</b></mat-label>{{configureStepsForm.value["userRegistration"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Enable Animal Facility:-</b></mat-label>{{configureStepsForm.value["animalFacilty"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+  <div class="col" style="text-align:center;color: blue;">
+   Social Configuration Details
+  </div>
+   
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Facebook Application ID:-</b></mat-label>{{socialConfigForm.value["fbAppID"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Facebook Secret ID:-</b></mat-label>{{socialConfigForm.value["fbSecretID"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Google Application ID:-</b></mat-label>{{socialConfigForm.value["googleAppID"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Google Secret ID:-</b></mat-label>{{socialConfigForm.value["googleSecretID"]}}
+   </div>
+ </div>
+</div>
+ <div>
+   <button style='font-size:90px;' mat-button class="btn" matStepperPrevious>&#8592;</button>
+      
+   <button  style="background-color: #4CAF50;" [ngStyle]="{'position': 'absolute', right: '25px'}"  mat-button class="btn" (click)="submit()">Submit</button></div>
  
+</mat-step>
   <!------------------------------------- Start Wizard ------------------------------------------->
      <mat-step [editable]= "false" >
      <ng-template matStepLabel>Start</ng-template>
@@ -37,7 +142,7 @@
      <form [formGroup]="basicStepsForm">
       
        <ng-template matStepLabel>Basic Step</ng-template>
-          <div class="jumbotron vertical-center " style="border:5px solid black">
+          <div class="jumbotron vertical-center " style="border:1.5px solid black">
             <mat-grid-list cols="2" rowHeight="6:1">
               <mat-grid-tile>
                   <mat-form-field>
@@ -103,7 +208,7 @@
        <ng-template matStepLabel>Configuration</ng-template>
        
     
-       <div style="height: 80%;" style="border:5px solid black">
+       <div style="height: 80%;" style="border:1.5px solid black">
         <ul class="list-group" >
           <li class="list-group-item">
             <mat-checkbox formControlName="instrumentSchedule">Schedule Instrument</mat-checkbox>
@@ -139,136 +244,186 @@
   <!-----------------------------------------Social Config Step ------------------------------------>
  
  
- 
- 
- <mat-step [stepControl]="socialConfigForm" [editable]="true">
-     <form [formGroup]="socialConfigForm">
-       <ng-template matStepLabel>Social Configuration</ng-template>
-       <div class="jumbotron vertical-center "  style="border:5px solid black">
-       <mat-grid-list cols="2" rowHeight="4:1">
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Facebook Application ID" formControlName="fbAppID" >
-          </mat-form-field>
-        </mat-grid-tile>
+  <mat-step [stepControl]="socialConfigForm" [editable]="true">
+    <form [formGroup]="socialConfigForm">
+      <ng-template matStepLabel>Social Configuration</ng-template>
+      <div class="jumbotron vertical-center " style="border:1.5px solid black;padding: 15px;" >
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <input matInput placeholder="Facebook Application ID" formControlName="fbAppID" >
+            </mat-form-field>
+            <div style="color: red;"  *ngIf="!socialConfigForm.controls['fbAppID'].valid && socialConfigForm.controls['fbAppID']?.touched"> Please enter the Facebook AppID</div>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <input matInput placeholder="Facebook Secret ID" formControlName="fbSecretID" >
+            </mat-form-field>
+            <div style="color: red;"  *ngIf="!socialConfigForm.controls['fbSecretID'].valid && socialConfigForm.controls['fbSecretID']?.touched"> Please enter the Facebook Secret ID</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <input matInput placeholder="Google Application ID" formControlName="googleAppID" >
+            </mat-form-field>
+            <div style="color: red;"  *ngIf="!socialConfigForm.controls['googleAppID'].valid && socialConfigForm.controls['googleAppID']?.touched"> Please enter the Google AppID</div>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <input matInput placeholder="Google Secret ID" formControlName="googleSecretID" >
+            </mat-form-field>
+            <div style="color: red;"  *ngIf="!socialConfigForm.controls['googleSecretID'].valid && socialConfigForm.controls['googleSecretID']?.touched"> Please enter the Google Secret ID</div>
+          </div>
+        </div>
 
-        <div style="color: red;"  *ngIf="!socialConfigForm.controls['fbAppID'].valid && socialConfigForm.controls['fbAppID']?.touched"> Please enter the Facebook AppID</div>
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Facebook Secret ID" formControlName="fbSecretID" >
-          </mat-form-field>
-        </mat-grid-tile>
-        <div style="color: red;"  *ngIf="!socialConfigForm.controls['fbSecretID'].valid && socialConfigForm.controls['fbSecretID']?.touched"> Please enter the Facebook Secret ID</div>
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Google Application ID" formControlName="googleAppID" >
-          </mat-form-field>
-        </mat-grid-tile>
-      
-        <div style="color: red;"  *ngIf="!socialConfigForm.controls['googleAppID'].valid && socialConfigForm.controls['googleAppID']?.touched"> Please enter the Google AppID</div>
-        <mat-grid-tile>
-          <mat-form-field>
-            <input matInput placeholder="Google Secret ID" formControlName="googleSecretID" >
-          </mat-form-field>
-        </mat-grid-tile>
-        <div style="color: red;"  *ngIf="!socialConfigForm.controls['googleSecretID'].valid && socialConfigForm.controls['googleSecretID']?.touched"> Please enter the Google Secret ID</div>
- 
-      </mat-grid-list>
-    </div>
-       <div>
-        <button style='font-size:100px;' mat-button class="btn" matStepperPrevious>&#8592;</button>
-         
-        <button style='font-size:100px;' [ngStyle]="{'position': 'absolute', right: '0'}"  mat-button class="btn" (click)="goForward(stepper)">&#8594;</button>
-       </div>       
-     </form>
-   </mat-step>
+        <!-- <mat-grid-list cols="2" rowHeight="4:1">
+       <mat-grid-tile>
+         <mat-form-field>
+           <input matInput placeholder="Facebook Application ID" formControlName="fbAppID" >
+         </mat-form-field>
+       </mat-grid-tile>
+
+       <div style="color: red;"  *ngIf="!socialConfigForm.controls['fbAppID'].valid && socialConfigForm.controls['fbAppID']?.touched"> Please enter the Facebook AppID</div>
+       <mat-grid-tile>
+         <mat-form-field>
+           <input matInput placeholder="Facebook Secret ID" formControlName="fbSecretID" >
+         </mat-form-field>
+       </mat-grid-tile>
+       <div style="color: red;"  *ngIf="!socialConfigForm.controls['fbSecretID'].valid && socialConfigForm.controls['fbSecretID']?.touched"> Please enter the Facebook Secret ID</div>
+       <mat-grid-tile>
+         <mat-form-field>
+           <input matInput placeholder="Google Application ID" formControlName="googleAppID" >
+         </mat-form-field>
+       </mat-grid-tile>
+
+       <div style="color: red;"  *ngIf="!socialConfigForm.controls['googleAppID'].valid && socialConfigForm.controls['googleAppID']?.touched"> Please enter the Google AppID</div>
+       <mat-grid-tile>
+         <mat-form-field>
+           <input matInput placeholder="Google Secret ID" formControlName="googleSecretID" >
+         </mat-form-field>
+       </mat-grid-tile>
+       <div style="color: red;"  *ngIf="!socialConfigForm.controls['googleSecretID'].valid && socialConfigForm.controls['googleSecretID']?.touched"> Please enter the Google Secret ID</div>
+
+     </mat-grid-list> -->
+   </div>
+      <div>
+       <button style='font-size:100px;' mat-button class="btn" matStepperPrevious>&#8592;</button>
+
+       <button style='font-size:100px;' [ngStyle]="{'position': 'absolute', right: '0'}"  mat-button class="btn" (click)="goForward(stepper)">&#8594;</button>
+      </div>       
+    </form>
+  </mat-step>
  
  
    <!-----------------------------------------Preview  ------------------------------------>
   
-  
-   <mat-step>
-     <ng-template matStepLabel>Preview</ng-template>
-     <div class="jumbotron vertical-center " style="border:5px solid black">
-     <hr>
-     <div class="row">
-       <div class="col">
-        <mat-label><b>Customer Name:-</b></mat-label>{{basicStepsForm.value["customerName"]}}
-       </div>
-       <div class="col">
-        <mat-label><b>Key:-</b></mat-label>{{basicStepsForm.value["sitekey"]}}
-      </div>
-     </div>
-     <hr>
-     <div class="row">
-      <div class="col">
-        <mat-label><b>Description:-</b></mat-label>{{basicStepsForm.value["description"]}}
-      </div>
-      <div class="col">
-        <mat-label><b>Theme:-</b></mat-label>{{basicStepsForm.value["theme"]}}
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <mat-label><b>Time Zone:-</b></mat-label>{{basicStepsForm.value["timeZone"]}}
-      </div>
-      <div class="col">
-        <mat-label><b>Administrator Name :-</b></mat-label>{{basicStepsForm.value["adminName"]}}
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <mat-label><b>Schedule Instrument:-</b></mat-label>{{configureStepsForm.value["instrumentSchedule"]}}
-      </div>
-      <div class="col">
-        <mat-label><b>Sample Submission:-</b></mat-label>{{configureStepsForm.value["sampleSubmission"]}}
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <mat-label><b>Supplies Submission:-</b></mat-label>{{configureStepsForm.value["suppliesSubmission"]}}
-      </div>
-      <div class="col">
-        <mat-label><b>Enable Barcode:-</b></mat-label>{{configureStepsForm.value["barcode"]}}
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <mat-label><b>Enable User Registrartion:-</b></mat-label>{{configureStepsForm.value["userRegistration"]}}
-      </div>
-      <div class="col">
-        <mat-label><b>Enable Animal Facility:-</b></mat-label>{{configureStepsForm.value["animalFacilty"]}}
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <mat-label><b>Facebook Application ID:-</b></mat-label>{{socialConfigForm.value["fbAppID"]}}
-      </div>
-      <div class="col">
-        <mat-label><b>Facebook Secret ID:-</b></mat-label>{{socialConfigForm.value["fbSecretID"]}}
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <mat-label><b>Google Application ID:-</b></mat-label>{{socialConfigForm.value["googleAppID"]}}
-      </div>
-      <div class="col">
-        <mat-label><b>Google Secret ID:-</b></mat-label>{{socialConfigForm.value["googleSecretID"]}}
-      </div>
-    </div>
-  </div>
-    <div>
-      <button style='font-size:90px;' mat-button class="btn" matStepperPrevious>&#8592;</button>
-         
-      <button  style="background-color: #4CAF50;" [ngStyle]="{'position': 'absolute', right: '0'}"  mat-button class="btn" (click)="submit()">Submit</button></div>
     
-   </mat-step>
+  
+ <mat-step>
+  <ng-template matStepLabel>Preview</ng-template>
+  <div class="jumbotron vertical-center " style="border:1.5px solid black">
+  <hr>
+  <div class="row">
+   <div class="col"  style="color: blue;">
+    Basic Details
+   </div>
+    
+  </div>
+  <hr>
+  <div class="row">
+   
+    <div class="col">
+     <mat-label><b>Customer Name:-</b></mat-label>{{basicStepsForm.value["customerName"]}}
+    </div>
+    <div class="col">
+     <mat-label><b>Key:-</b></mat-label>{{basicStepsForm.value["sitekey"]}}
+   </div>
+  </div>
+  <hr>
+  <div class="row">
+   <div class="col">
+     <mat-label><b>Description:-</b></mat-label>{{basicStepsForm.value["description"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Theme:-</b></mat-label>{{basicStepsForm.value["theme"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Time Zone:-</b></mat-label>{{basicStepsForm.value["timeZone"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Administrator Name :-</b></mat-label>{{basicStepsForm.value["adminName"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+  <div class="col"  style="color: blue;">
+   Configuration Details
+  </div>
+   
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Schedule Instrument:-</b></mat-label>{{configureStepsForm.value["instrumentSchedule"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Sample Submission:-</b></mat-label>{{configureStepsForm.value["sampleSubmission"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Supplies Submission:-</b></mat-label>{{configureStepsForm.value["suppliesSubmission"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Enable Barcode:-</b></mat-label>{{configureStepsForm.value["barcode"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Enable User Registrartion:-</b></mat-label>{{configureStepsForm.value["userRegistration"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Enable Animal Facility:-</b></mat-label>{{configureStepsForm.value["animalFacilty"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+  <div class="col" style="color: blue;">
+   Social Configuration Details
+  </div>
+   
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Facebook Application ID:-</b></mat-label>{{socialConfigForm.value["fbAppID"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Facebook Secret ID:-</b></mat-label>{{socialConfigForm.value["fbSecretID"]}}
+   </div>
+ </div>
+ <hr>
+ <div class="row">
+   <div class="col">
+     <mat-label><b>Google Application ID:-</b></mat-label>{{socialConfigForm.value["googleAppID"]}}
+   </div>
+   <div class="col">
+     <mat-label><b>Google Secret ID:-</b></mat-label>{{socialConfigForm.value["googleSecretID"]}}
+   </div>
+ </div>
+</div>
+ <div>
+   <button style='font-size:90px;' mat-button class="btn" matStepperPrevious>&#8592;</button>
+      
+   <button  style="background-color: #4CAF50;" [ngStyle]="{'position': 'absolute', right: '25px'}"  mat-button class="btn" (click)="submit()">Submit</button></div>
+ 
+</mat-step>
  </mat-horizontal-stepper>
  
  
