@@ -16,9 +16,13 @@ const routes: Routes = [
     component : HomeComponent
   },
   {
-    path : 'grid/:custName',
+    path : 'grid',
     component : GridComponent
   },
+  // {
+  //   path : 'grid/:custName',
+  //   component : GridComponent
+  // },
   {
     path : "**",
     component : NotfoundComponent

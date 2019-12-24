@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GridComponent } from './grid/grid.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { GridComponent } from './grid/grid.component';
     RouterModule,
     MatCheckboxModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
