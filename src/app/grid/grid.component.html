@@ -1,1 +1,36 @@
-<p>grid works!</p>
+<br>
+<button style="left:100px" [routerLink]="['/home']" routerLinkActive="router-link-active" >Create Customer</button>
+<kendo-grid 
+[data] = "gridView"
+[pageSize]="pageSize"
+
+[pageable]="true"
+[sortable]="true"
+[groupable]="true"
+[reorderable]="true"
+[resizable]="true"
+[height]="180"
+[skip]="skip"
+
+(pageChange)="pageChange($event)"
+[columnMenu]="{ filter: true }"
+>
+
+<kendo-grid-column field = "name" title="Name"  width="40"></kendo-grid-column>
+<kendo-grid-column field = "logo" title="Logo"  width="40"></kendo-grid-column>
+<kendo-grid-column field = "description" title="Description"  width="40"></kendo-grid-column>
+<kendo-grid-column field = "theme" title="Theme"  width="40"></kendo-grid-column>
+<kendo-grid-column field = "defaultCountry" title="Default Country"  width="40"></kendo-grid-column>
+<!-- <kendo-grid-command-column title="command" width="40">
+    <ng-template kendoGridCellTemplate let-isNew="isNew">
+        <button kendoGridEditCommand [primary]="true">Edit</button>
+        <button (click)="hello()"[disabled]=toggle>{{msg}}</button>
+    </ng-template>
+</kendo-grid-command-column> -->
+<!-- <kendo-grid-command-column title="command" width="40">
+    <ng-template kendoGridCellTemplate>
+        <button kendoGridEditCommand [primary]="true">Edit</button>
+        <button kendoGridRemoveCommand>Delete</button>
+    </ng-template>
+</kendo-grid-command-column> -->
+</kendo-grid>
